@@ -1,0 +1,24 @@
+
+
+<div class="flex flex-col bg-blend-color-burn border rounded-md p-4 border-blue">
+<h1 class="text-3xl font-bold text-white bg-orange p-4 text-center rounded-md">Last articles</h1>
+
+<%= link_to "Add new", new_article_path, class:'bg-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-30 text-center mt-8 mb-8' %>
+<ul>
+<% @articles.reverse.each do |t| %>
+  <li>
+    <span class="underline decoration-orange"><%= link_to t.title, article_path(t) %></span>&nbsp
+
+
+    <%= link_to edit_article_path(t) do %>
+      <i class="fa-solid fa-pen-to-square"></i>
+    <% end %>
+    <%= link_to article_path(t), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+      <i class='fa-solid fa-trash-can'></i>
+    <% end %>
+  </li>
+<% end %>
+</ul>
+
+
+</div>
